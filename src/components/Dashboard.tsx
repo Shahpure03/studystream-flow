@@ -211,10 +211,10 @@ export function Dashboard() {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {recommendations.map((item) => (
-                    <Card key={item.id} className="hover:shadow-elevated transition-all duration-300 cursor-pointer group">
+                    <Card key={item.id} className="hover:shadow-elevated transition-all duration-300 cursor-pointer group hover:scale-[1.02] border-0 bg-gradient-to-br from-card to-muted/20">
                       <CardContent className="p-4">
                         <div className="flex items-start gap-3">
-                          <div className="text-3xl">{item.thumbnail}</div>
+                          <div className="text-3xl group-hover:animate-bounce">{item.thumbnail}</div>
                           <div className="flex-1 min-w-0">
                             <h3 className="font-semibold text-sm mb-1 group-hover:text-primary transition-colors">
                               {item.title}
@@ -255,24 +255,24 @@ export function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="flex items-center gap-3 p-3 bg-success-light rounded-lg">
-                    <Award className="h-8 w-8 text-success" />
+                  <div className="flex items-center gap-3 p-3 bg-success-light rounded-lg hover:shadow-soft transition-all duration-300 hover:scale-105 cursor-pointer group">
+                    <Award className="h-8 w-8 text-success group-hover:animate-bounce" />
                     <div>
                       <div className="font-semibold text-success">Quiz Master</div>
                       <div className="text-xs text-success/80">Completed 5 quizzes</div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 bg-accent-light rounded-lg">
-                    <Flame className="h-8 w-8 text-accent" />
+                  <div className="flex items-center gap-3 p-3 bg-accent-light rounded-lg hover:shadow-soft transition-all duration-300 hover:scale-105 cursor-pointer group">
+                    <Flame className="h-8 w-8 text-accent group-hover:animate-glow" />
                     <div>
                       <div className="font-semibold text-accent">Streak Hero</div>
                       <div className="text-xs text-accent/80">7 day learning streak</div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 bg-warning-light rounded-lg">
-                    <Star className="h-8 w-8 text-warning" />
+                  <div className="flex items-center gap-3 p-3 bg-warning-light rounded-lg hover:shadow-soft transition-all duration-300 hover:scale-105 cursor-pointer group">
+                    <Star className="h-8 w-8 text-warning group-hover:animate-pulse-slow" />
                     <div>
                       <div className="font-semibold text-warning">Point Collector</div>
                       <div className="text-xs text-warning/80">1,000+ points earned</div>
@@ -312,7 +312,7 @@ export function Dashboard() {
                   </div>
                 ))}
                 
-                <Button className="w-full mt-4 bg-gradient-learning">
+                <Button variant="ocean" className="w-full mt-4">
                   Set New Goals
                 </Button>
               </CardContent>

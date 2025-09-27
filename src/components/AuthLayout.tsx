@@ -50,18 +50,18 @@ export function AuthLayout() {
         />
         
         {/* Floating elements */}
-        <div className="absolute top-1/4 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-card animate-bounce-in" style={{ animationDelay: '0.5s' }}>
-          <div className="text-primary font-semibold">📚 Interactive Lessons</div>
+        <div className="absolute top-1/4 left-8 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-elevated animate-bounce-in hover:animate-float group transition-all duration-300 hover:scale-105" style={{ animationDelay: '0.5s' }}>
+          <div className="text-primary font-semibold group-hover:animate-wave inline-block">📚 Interactive Lessons</div>
           <div className="text-sm text-muted-foreground">Learn at your own pace</div>
         </div>
         
-        <div className="absolute bottom-1/3 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-card animate-bounce-in" style={{ animationDelay: '1s' }}>
-          <div className="text-secondary font-semibold">🎯 Smart Goals</div>
+        <div className="absolute bottom-1/3 right-8 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-elevated animate-bounce-in hover:animate-float group transition-all duration-300 hover:scale-105" style={{ animationDelay: '1s' }}>
+          <div className="text-secondary font-semibold group-hover:animate-pulse-slow inline-block">🎯 Smart Goals</div>
           <div className="text-sm text-muted-foreground">Track your progress</div>
         </div>
         
-        <div className="absolute top-1/2 right-1/4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-card animate-bounce-in" style={{ animationDelay: '1.5s' }}>
-          <div className="text-accent font-semibold">🏆 Achievements</div>
+        <div className="absolute top-1/2 right-1/4 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-elevated animate-bounce-in hover:animate-float group transition-all duration-300 hover:scale-105" style={{ animationDelay: '1.5s' }}>
+          <div className="text-accent font-semibold group-hover:animate-glow inline-block">🏆 Achievements</div>
           <div className="text-sm text-muted-foreground">Earn badges & rewards</div>
         </div>
       </div>

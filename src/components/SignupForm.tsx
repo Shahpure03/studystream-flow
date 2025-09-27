@@ -183,7 +183,9 @@ export function SignupForm({ onToggleForm }: SignupFormProps) {
 
           <Button
             type="submit"
-            className="w-full h-12 bg-gradient-learning hover:opacity-90 text-secondary-foreground font-semibold shadow-glow transition-all duration-300"
+            variant="lavender"
+            size="lg"
+            className="w-full h-12 font-semibold"
             disabled={isLoading}
           >
             {isLoading ? (

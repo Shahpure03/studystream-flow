@@ -99,7 +99,9 @@ export function LoginForm({ onToggleForm }: LoginFormProps) {
 
           <Button
             type="submit"
-            className="w-full h-12 bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold shadow-glow transition-all duration-300"
+            variant="ocean"
+            size="lg"
+            className="w-full h-12 font-semibold"
             disabled={isLoading}
           >
             {isLoading ? (
