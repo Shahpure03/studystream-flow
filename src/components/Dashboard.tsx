@@ -23,6 +23,7 @@ import apiService from "@/services/api";
 import { FunFactBox } from "@/components/FunFactBox";
 import { getRandomMascotFact,getRandomSubjectFact,FunFact } from "@/data/funFacts";
 import MascotEasterEgg from './ui/mascot-easter-egg';
+import SubjectFunFact from './ui/subject-fun-fact';
 import './Dashboard.css';
 
 interface User {
@@ -512,6 +513,19 @@ export function Dashboard() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        {/* Updated subjects with fun facts */}
+        <div className="recommended-content">
+          <div className="subject-card">
+            <SubjectFunFact subject="Mathematics" icon="✨" />
+          </div>
+          <div className="subject-card">
+            <SubjectFunFact subject="Science" icon="✨" />
+          </div>
+          <div className="subject-card">
+            <SubjectFunFact subject="History" icon="✨" />
           </div>
         </div>
       </div>

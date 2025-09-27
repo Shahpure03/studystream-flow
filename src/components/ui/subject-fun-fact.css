@@ -1,29 +1,29 @@
-.mascot-container {
+.subject-container {
   position: relative;
   display: inline-block;
+  margin: 10px;
 }
 
-.mascot-icon {
+.subject-icon {
   font-size: 2rem;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.mascot-icon:hover {
+.subject-icon:hover {
   transform: scale(1.2);
 }
 
-.mascot-fact {
+.subject-fact {
   position: fixed;
-  bottom: 10%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
   color: #1e293b;
-  padding: 15px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  font-weight: bold;
   text-align: center;
   animation: slideIn 0.5s ease, fadeOut 0.5s ease 4.5s;
 }
@@ -31,11 +31,11 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(20px);
+    transform: translate(-50%, -60%);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translate(-50%, -50%);
   }
 }
 
