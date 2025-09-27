@@ -2,23 +2,24 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogIn, User, Lock } from "lucide-react";
+import { Card,CardContent,CardHeader,CardTitle } from "@/components/ui/card";
+import { LogIn,User,Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import authService from "@/services/auth";
 
 interface LoginFormProps {
   onToggleForm: () => void;
 }
 
 export function LoginForm({ onToggleForm }: LoginFormProps) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+  const [isLoading,setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!username.trim() || !password.trim()) {
       toast({
         title: "Missing Information",
@@ -29,24 +30,26 @@ export function LoginForm({ onToggleForm }: LoginFormProps) {
     }
 
     setIsLoading(true);
-    
-    // Simulate login process
-    setTimeout(() => {
-      // For demo purposes, any credentials work
-      localStorage.setItem("user", JSON.stringify({ 
-        username, 
-        isAuthenticated: true 
-      }));
-      
+
+    try {
+      const response = await authService.login(username,password);
+
       toast({
         title: "Welcome back!",
-        description: `Logged in successfully as ${username}`,
+        description: `Logged in successfully as ${response.user.username}`,
       });
-      
+
       // Redirect to dashboard
       window.location.href = "/dashboard";
+    } catch (error) {
+      toast({
+        title: "Login Failed",
+        description: error.message || "Invalid credentials. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -57,8 +60,15 @@ export function LoginForm({ onToggleForm }: LoginFormProps) {
           Welcome Back
         </CardTitle>
         <p className="text-muted-foreground">Sign in to continue your learning</p>
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
+          <p className="text-sm text-blue-800">
+            <strong>Demo Credentials:</strong><br />
+            Username: <code>demo</code><br />
+            Password: <code>demo</code>
+          </p>
+        </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-6">
         <form onSubmit={handleLogin} className="space-y-4">
           <div className="space-y-2">
