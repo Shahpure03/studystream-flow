@@ -6,63 +6,66 @@
 
 @layer base {
   :root {
-    /* Core educational palette */
-    --background: 210 40% 98%;
-    --foreground: 222 84% 4.9%;
+    /* Cool & Soothing Color Palette */
+    --background: 220 30% 97%;
+    --foreground: 215 25% 15%;
 
     /* Cards and surfaces */
-    --card: 0 0% 100%;
-    --card-foreground: 222 84% 4.9%;
+    --card: 220 20% 99%;
+    --card-foreground: 215 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4.9%;
+    --popover: 220 20% 99%;
+    --popover-foreground: 215 25% 15%;
 
-    /* Primary - Educational Blue */
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 221 83% 73%;
+    /* Primary - Calming Ocean Blue */
+    --primary: 210 100% 60%;
+    --primary-foreground: 220 30% 97%;
+    --primary-glow: 210 85% 75%;
 
-    /* Secondary - Learning Teal */
-    --secondary: 180 77% 32%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary - Soothing Teal */
+    --secondary: 185 90% 45%;
+    --secondary-foreground: 220 30% 97%;
 
-    /* Success - Achievement Green */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
-    --success-light: 142 76% 86%;
+    /* Success - Fresh Mint */
+    --success: 160 80% 45%;
+    --success-foreground: 220 30% 97%;
+    --success-light: 160 60% 85%;
 
-    /* Accent - Progress Purple */
-    --accent: 262 83% 58%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 262 83% 88%;
+    /* Accent - Lavender Purple */
+    --accent: 250 75% 65%;
+    --accent-foreground: 220 30% 97%;
+    --accent-light: 250 60% 88%;
 
-    /* Warning - Attention Orange */
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --warning-light: 38 92% 85%;
+    /* Warning - Soft Amber */
+    --warning: 45 90% 55%;
+    --warning-foreground: 220 30% 97%;
+    --warning-light: 45 85% 88%;
 
     /* Muted tones */
-    --muted: 210 40% 94%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 20% 92%;
+    --muted-foreground: 215 15% 50%;
 
     /* Interactive elements */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --border: 220 15% 88%;
+    --input: 220 15% 95%;
+    --ring: 210 100% 60%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 220 30% 97%;
 
-    /* Educational gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-learning: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
-    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--success-light)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+    /* Soothing gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210, 100%, 60%), hsl(210, 85%, 75%));
+    --gradient-learning: linear-gradient(135deg, hsl(185, 90%, 45%), hsl(250, 75%, 65%));
+    --gradient-success: linear-gradient(135deg, hsl(160, 80%, 45%), hsl(160, 60%, 85%));
+    --gradient-hero: linear-gradient(135deg, hsl(220, 30%, 97%), hsl(220, 20%, 92%));
+    --gradient-ocean: linear-gradient(135deg, hsl(210, 100%, 60%), hsl(185, 90%, 45%));
+    --gradient-lavender: linear-gradient(135deg, hsl(250, 75%, 65%), hsl(260, 70%, 75%));
 
-    /* Shadows for depth */
-    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
-    --shadow-elevated: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
-    --shadow-glow: 0 0 20px hsl(var(--primary-glow) / 0.3);
+    /* Enhanced shadows */
+    --shadow-card: 0 4px 12px -2px hsl(210 100% 60% / 0.1), 0 2px 6px -1px hsl(210 100% 60% / 0.06);
+    --shadow-elevated: 0 12px 24px -4px hsl(210 100% 60% / 0.12), 0 6px 12px -2px hsl(210 100% 60% / 0.08);
+    --shadow-glow: 0 0 25px hsl(210 85% 75% / 0.4);
+    --shadow-soft: 0 2px 8px -1px hsl(220 20% 60% / 0.1);
 
     /* Animation timing */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

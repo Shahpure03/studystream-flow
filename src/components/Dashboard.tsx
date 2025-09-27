@@ -412,8 +412,8 @@ export function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="flex items-center gap-3 p-3 bg-success-light rounded-lg">
-                    <Award className="h-8 w-8 text-success" />
+                  <div className="flex items-center gap-3 p-3 bg-success-light rounded-lg hover:shadow-soft transition-all duration-300 hover:scale-105 cursor-pointer group">
+                    <Award className="h-8 w-8 text-success group-hover:animate-bounce" />
                     <div>
                       <div className="font-semibold text-success">Quiz Master</div>
                       <div className="text-xs text-success/80">Completed 5 quizzes</div>
