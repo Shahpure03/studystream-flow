@@ -27,11 +27,14 @@ import SubjectFunFact from './ui/subject-fun-fact';
 import './Dashboard.css';
 
 interface User {
+  id: string;
   username: string;
   gradeLevel: string;
   subjects: string[];
   isAuthenticated: boolean;
   joinedDate: string;
+  currentStreak?: number;
+  totalPoints?: number;
 }
 
 interface Recommendation {
@@ -39,8 +42,10 @@ interface Recommendation {
   title: string;
   subject: string;
   duration: string;
+  duration_minutes: number;
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   type: 'video' | 'quiz' | 'reading';
+  content_type: 'video' | 'quiz' | 'reading';
   thumbnail: string;
 }
 
@@ -50,6 +55,8 @@ interface Goal {
   progress: number;
   target: number;
   completed: boolean;
+  current_value: number;
+  target_value: number;
 }
 
 export function Dashboard() {
@@ -273,7 +280,6 @@ export function Dashboard() {
                     fact={mascotFact}
                     isVisible={showMascotFact}
                     onClose={handleMascotFactClose}
-                    position="bottom"
                   />
                 )}
               </div>
@@ -351,7 +357,6 @@ export function Dashboard() {
                                   fact={subjectFact}
                                   isVisible={showSubjectFact}
                                   onClose={handleSubjectFactClose}
-                                  position="top"
                                 />
                               )}
                             </div>
@@ -516,18 +521,7 @@ export function Dashboard() {
           </div>
         </div>
 
-        {/* Updated subjects with fun facts */}
-        <div className="recommended-content">
-          <div className="subject-card">
-            <SubjectFunFact subject="Mathematics" icon="✨" />
-          </div>
-          <div className="subject-card">
-            <SubjectFunFact subject="Science" icon="✨" />
-          </div>
-          <div className="subject-card">
-            <SubjectFunFact subject="History" icon="✨" />
-          </div>
-        </div>
+
       </div>
 
       <footer className="dashboard-footer">

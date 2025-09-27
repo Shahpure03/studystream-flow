@@ -8,10 +8,9 @@ interface FunFactBoxProps {
     fact: FunFact;
     isVisible: boolean;
     onClose: () => void;
-    position?: 'top' | 'bottom' | 'left' | 'right';
 }
 
-export function FunFactBox({ fact,isVisible,onClose,position = 'top' }: FunFactBoxProps) {
+export function FunFactBox({ fact,isVisible,onClose }: FunFactBoxProps) {
     const [isAnimating,setIsAnimating] = useState(false);
 
     useEffect(() => {
@@ -24,67 +23,38 @@ export function FunFactBox({ fact,isVisible,onClose,position = 'top' }: FunFactB
 
     if (!isVisible) return null;
 
-    const getPositionClasses = () => {
-        switch (position) {
-            case 'top':
-                return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';
-            case 'bottom':
-                return 'top-full left-1/2 transform -translate-x-1/2 mt-2';
-            case 'left':
-                return 'right-full top-1/2 transform -translate-y-1/2 mr-2';
-            case 'right':
-                return 'left-full top-1/2 transform -translate-y-1/2 ml-2';
-            default:
-                return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';
-        }
-    };
-
     const getAnimationClasses = () => {
-        if (isAnimating) {
-            switch (position) {
-                case 'top':
-                    return 'animate-slide-in-from-bottom';
-                case 'bottom':
-                    return 'animate-slide-in-from-top';
-                case 'left':
-                    return 'animate-slide-in-from-right';
-                case 'right':
-                    return 'animate-slide-in-from-left';
-                default:
-                    return 'animate-slide-in-from-bottom';
-            }
-        }
-        return '';
+        return isAnimating ? "animate-slide-in-from-bottom" : "";
     };
 
     const getTypeIcon = () => {
         switch (fact.type) {
-            case 'joke':
-                return '😄';
-            case 'fact':
-                return '💡';
-            case 'riddle':
-                return '🤔';
+            case "joke":
+                return "😄";
+            case "fact":
+                return "💡";
+            case "riddle":
+                return "🤔";
             default:
-                return '✨';
+                return "✨";
         }
     };
 
     const getTypeColor = () => {
         switch (fact.type) {
-            case 'joke':
-                return 'border-yellow-200 bg-yellow-50';
-            case 'fact':
-                return 'border-blue-200 bg-blue-50';
-            case 'riddle':
-                return 'border-purple-200 bg-purple-50';
+            case "joke":
+                return "border-yellow-200 bg-yellow-50";
+            case "fact":
+                return "border-blue-200 bg-blue-50";
+            case "riddle":
+                return "border-purple-200 bg-purple-50";
             default:
-                return 'border-primary/20 bg-primary/5';
+                return "border-primary/20 bg-primary/5";
         }
     };
 
     return (
-        <div className={`absolute z-50 ${getPositionClasses()}`}>
+        <div className="fixed inset-0 flex items-center justify-center z-50">
             <Card className={`shadow-elevated border-2 ${getTypeColor()} min-w-64 max-w-80 ${getAnimationClasses()}`}>
                 <CardContent className="p-4">
                     <div className="flex items-start gap-3">
@@ -97,7 +67,7 @@ export function FunFactBox({ fact,isVisible,onClose,position = 'top' }: FunFactB
                             <div className="flex items-center gap-2 mb-2">
                                 <Sparkles className="h-4 w-4 text-primary" />
                                 <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-                                    {fact.type === 'joke' ? 'Joke' : fact.type === 'fact' ? 'Fun Fact' : 'Riddle'}
+                                    {fact.type === "joke" ? "Joke" : fact.type === "fact" ? "Fun Fact" : "Riddle"}
                                 </span>
                             </div>
                             <p className="text-sm text-foreground leading-relaxed">
@@ -115,6 +85,26 @@ export function FunFactBox({ fact,isVisible,onClose,position = 'top' }: FunFactB
                     </div>
                 </CardContent>
             </Card>
+        </div>
+    );
+}
+
+export function LogoutButton() {
+    const handleLogout = () => {
+        // Add logout functionality here
+        console.log("User logged out");
+        // Redirect or clear session
+    };
+
+    return (
+        <div className="absolute top-4 right-4">
+            <Button
+                variant="outline"
+                onClick={handleLogout}
+                className="text-sm font-semibold hover:bg-primary/10 hover:text-primary"
+            >
+                Logout
+            </Button>
         </div>
     );
 }

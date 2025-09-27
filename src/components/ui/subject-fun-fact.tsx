@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React,{ useState } from 'react';
 import './subject-fun-fact.css';
 
-const subjectFacts: Record<string, string[]> = {
+const subjectFacts: Record<string,string[]> = {
   Mathematics: [
     "Did you know? The concept of zero was independently invented by the Mayans and Indians.",
     "The infinity symbol (∞) was first used in 1655 by John Wallis.",
@@ -24,9 +24,9 @@ type SubjectFunFactProps = {
   icon: string;
 };
 
-const SubjectFunFact: React.FC<SubjectFunFactProps> = ({ subject, icon }) => {
-  const [visible, setVisible] = useState(false);
-  const [currentFact, setCurrentFact] = useState('');
+const SubjectFunFact: React.FC<SubjectFunFactProps> = ({ subject,icon }) => {
+  const [visible,setVisible] = useState(false);
+  const [currentFact,setCurrentFact] = useState('');
 
   const handleClick = () => {
     const facts = subjectFacts[subject] || [];
@@ -34,7 +34,7 @@ const SubjectFunFact: React.FC<SubjectFunFactProps> = ({ subject, icon }) => {
     setCurrentFact(randomFact);
     setVisible(true);
 
-    setTimeout(() => setVisible(false), 5000); // Auto-hide after 5 seconds
+    setTimeout(() => setVisible(false),5000); // Auto-hide after 5 seconds
   };
 
   return (

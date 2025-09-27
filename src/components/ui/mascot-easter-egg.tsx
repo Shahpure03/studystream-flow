@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React,{ useState } from 'react';
 import './mascot-easter-egg.css'; // Import CSS for animations
 
 const funFacts = [
@@ -10,21 +10,21 @@ const funFacts = [
 ];
 
 const MascotEasterEgg = () => {
-  const [visible, setVisible] = useState(false);
-  const [currentFact, setCurrentFact] = useState('');
-  const [cooldown, setCooldown] = useState(false);
+  const [visible,setVisible] = useState(false);
+  const [currentFact,setCurrentFact] = useState('');
+  const [cooldown,setCooldown] = useState(false);
 
   const handleClick = () => {
     if (cooldown) return;
 
     setCooldown(true);
-    setTimeout(() => setCooldown(false), 2000); // 2-second cooldown
+    setTimeout(() => setCooldown(false),2000); // 2-second cooldown
 
     const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
     setCurrentFact(randomFact);
     setVisible(true);
 
-    setTimeout(() => setVisible(false), 5000); // Auto-hide after 5 seconds
+    setTimeout(() => setVisible(false),5000); // Auto-hide after 5 seconds
   };
 
   return (
