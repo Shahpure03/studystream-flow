@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card,CardContent,CardHeader,CardTitle } from "@/components/ui/card";
+import { Select,SelectContent,SelectItem,SelectTrigger,SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { UserPlus, User, Lock, GraduationCap } from "lucide-react";
+import { UserPlus,User,Lock,GraduationCap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import authService from "@/services/auth";
 
 interface SignupFormProps {
   onToggleForm: () => void;
@@ -14,34 +15,34 @@ interface SignupFormProps {
 
 const grades = [
   "Elementary (K-5)",
-  "Middle School (6-8)", 
+  "Middle School (6-8)",
   "High School (9-12)",
   "College/University",
   "Adult Learner"
 ];
 
 const subjects = [
-  { id: "math", label: "Mathematics", icon: "📊" },
-  { id: "science", label: "Science", icon: "🔬" },
-  { id: "english", label: "English/Language Arts", icon: "📝" },
-  { id: "history", label: "History/Social Studies", icon: "🏛️" },
-  { id: "art", label: "Arts & Design", icon: "🎨" },
-  { id: "music", label: "Music", icon: "🎵" },
-  { id: "coding", label: "Programming/Tech", icon: "💻" },
-  { id: "languages", label: "Foreign Languages", icon: "🌍" }
+  { id: "math",label: "Mathematics",icon: "📊" },
+  { id: "science",label: "Science",icon: "🔬" },
+  { id: "english",label: "English/Language Arts",icon: "📝" },
+  { id: "history",label: "History/Social Studies",icon: "🏛️" },
+  { id: "art",label: "Arts & Design",icon: "🎨" },
+  { id: "music",label: "Music",icon: "🎵" },
+  { id: "coding",label: "Programming/Tech",icon: "💻" },
+  { id: "languages",label: "Foreign Languages",icon: "🌍" }
 ];
 
 export function SignupForm({ onToggleForm }: SignupFormProps) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [gradeLevel, setGradeLevel] = useState("");
-  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+  const [gradeLevel,setGradeLevel] = useState("");
+  const [selectedSubjects,setSelectedSubjects] = useState<string[]>([]);
+  const [isLoading,setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubjectChange = (subjectId: string, checked: boolean) => {
+  const handleSubjectChange = (subjectId: string,checked: boolean) => {
     if (checked) {
-      setSelectedSubjects([...selectedSubjects, subjectId]);
+      setSelectedSubjects([...selectedSubjects,subjectId]);
     } else {
       setSelectedSubjects(selectedSubjects.filter(id => id !== subjectId));
     }
@@ -49,7 +50,7 @@ export function SignupForm({ onToggleForm }: SignupFormProps) {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!username.trim() || !password.trim() || !gradeLevel || selectedSubjects.length === 0) {
       toast({
         title: "Missing Information",
@@ -60,28 +61,33 @@ export function SignupForm({ onToggleForm }: SignupFormProps) {
     }
 
     setIsLoading(true);
-    
-    // Simulate signup process
-    setTimeout(() => {
+
+    try {
       const userData = {
         username,
+        password,
         gradeLevel,
-        subjects: selectedSubjects,
-        isAuthenticated: true,
-        joinedDate: new Date().toISOString()
+        subjects: selectedSubjects
       };
-      
-      localStorage.setItem("user", JSON.stringify(userData));
-      
+
+      const response = await authService.register(userData);
+
       toast({
         title: "Account Created!",
-        description: `Welcome to EduLearn, ${username}! Your learning journey begins now.`,
+        description: `Welcome to StudyStream, ${response.user.username}! Your learning journey begins now.`,
       });
-      
+
       // Redirect to dashboard
       window.location.href = "/dashboard";
+    } catch (error) {
+      toast({
+        title: "Registration Failed",
+        description: error.message || "Failed to create account. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 2000);
+    }
   };
 
   return (
@@ -93,7 +99,7 @@ export function SignupForm({ onToggleForm }: SignupFormProps) {
         </CardTitle>
         <p className="text-muted-foreground">Create your personalized learning account</p>
       </CardHeader>
-      
+
       <CardContent className="space-y-6">
         <form onSubmit={handleSignup} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -163,14 +169,14 @@ export function SignupForm({ onToggleForm }: SignupFormProps) {
                   <Checkbox
                     id={subject.id}
                     checked={selectedSubjects.includes(subject.id)}
-                    onCheckedChange={(checked) => 
-                      handleSubjectChange(subject.id, checked as boolean)
+                    onCheckedChange={(checked) =>
+                      handleSubjectChange(subject.id,checked as boolean)
                     }
                     disabled={isLoading}
                     className="data-[state=checked]:bg-secondary data-[state=checked]:border-secondary"
                   />
-                  <Label 
-                    htmlFor={subject.id} 
+                  <Label
+                    htmlFor={subject.id}
                     className="text-sm cursor-pointer flex items-center gap-1"
                   >
                     <span>{subject.icon}</span>

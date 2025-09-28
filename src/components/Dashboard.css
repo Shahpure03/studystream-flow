@@ -1,0 +1,12 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8fafc;
+}
